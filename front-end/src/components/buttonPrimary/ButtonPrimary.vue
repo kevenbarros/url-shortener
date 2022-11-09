@@ -1,6 +1,6 @@
 
 <template>
-  <button class="button" @click.prevent="$emit('click')" :disabled="loader">
+  <button class="button" :disabled="loader">
     <div v-if="!loader">{{ title }}</div>
     <div class="lds-dual-ring" v-else></div>
   </button>

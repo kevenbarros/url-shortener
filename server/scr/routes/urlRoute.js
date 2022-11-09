@@ -4,10 +4,10 @@ const authMiddleware = require("../middleware/authMiddleware");
 
 function urlRoute(router) {
   router.get("/urlGetAll", getAllUrl);
-  router.get("/urlUser", authMiddleware, getUrlUser);
   router.get("/:shortUrlId", urlNavigate);
+  router.post("/urlUser", getUrlUser);
   router.post("/url", postUrl);
-  router.delete("/deleteUrl", authMiddleware, deleteUrl);
+  router.post("/deleteUrl", deleteUrl);
 }
 
 

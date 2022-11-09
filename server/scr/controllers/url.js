@@ -59,7 +59,7 @@ const deleteUrl = async (req, res, next) => {
       if (userId !== checkUrl[0].userId) return res.status(500).json({ error: "sem permissão" });
       await Url.deleteOne({ _id: idUrl })
       const updatedListUrls = await Url.find({ userId: userId })
-      return res.status(200).json(updatedListUrls);
+      return res.status(200).json({ data: updatedListUrls });
     }
   } catch (err) {
     return res.status(500).json({ error: 'url não encontrada' });

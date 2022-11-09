@@ -1,0 +1,131 @@
+.container {
+  padding: 15px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.form {
+  width: 100%;
+  padding: 0px 50px;
+  align-self: center;
+}
+
+.fieldsForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 21px;
+}
+
+.fieldsTable {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 21px;
+}
+
+.tableHeader {
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fieldTable {
+  width: 100%;
+  padding: 22px 10px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.textTable {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.fieldInput {
+  width: 100%;
+}
+
+.buttonInput {
+  white-space: nowrap;
+}
+
+.titleMain {
+  font-size: 32px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.btnLogin {
+  margin-right: 50px;
+  margin-bottom: 50px;
+  color: '#5B5959';
+  font-size: 16px;
+  padding: 12px 30px;
+  background-color: #FFFFFF;
+  border-radius: 50px;
+  border: 1px solid #5B5959;
+  cursor: pointer;
+}
+
+h4 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+
+.error {
+  color: #F55653;
+  margin-bottom: 20px;
+}
+
+.copy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1000px) {
+  .shortened {
+    width: 100%;
+  }
+
+  .long {
+    width: 0px;
+    display: none !important;
+  }
+
+  .form {
+    width: 100%;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .buttonInput {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .fieldsForm {
+    flex-direction: column;
+  }
+
+  .container {
+    padding: 20px 0px;
+    align-items: center;
+  }
+
+  .titleMain {
+    text-align: center;
+  }
+
+  .btnLogin {
+    margin-right: 0;
+  }
+}
