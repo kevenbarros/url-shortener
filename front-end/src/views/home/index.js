@@ -1,7 +1,9 @@
 import ButtonPrimaryVue from '../../components/buttonPrimary/ButtonPrimary.vue'
 import InputCustom from '../../components/inputCustom/InputCustom.vue'
 import api from '../../services/api'
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   components: {
     ButtonPrimaryVue, InputCustom,
   },
@@ -45,4 +47,4 @@ export default {
   mounted() {
     this.getUrls()
   }
-};
+})

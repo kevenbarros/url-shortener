@@ -2,7 +2,10 @@
 import api from '../../services/api'
 import ButtonPrimaryVue from '../../components/buttonPrimary/ButtonPrimary.vue'
 import InputCustom from '../../components/inputCustom/InputCustom.vue'
-export default {
+import login from '../../services/serviceUser'
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: 'Informations',
   components: {
     ButtonPrimaryVue, InputCustom
@@ -21,6 +24,12 @@ export default {
       this.error = { err: false, text: "" }
     },
     async login() {
+      const respo = await login.login({
+        email: this.email,
+        password: this.password.trim()
+      })
+      return console.log(respo)
+      if (!this.email || !this.password) return
       this.loader = true
       const response = await api.post("/session", {
         email: this.email,
@@ -36,5 +45,5 @@ export default {
       return this.error = { err: true, text: "Não foi possivel fazer login, contate o suporte" }
     }
   },
-}
+})
 

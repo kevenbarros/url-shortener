@@ -1,7 +1,9 @@
 import api from '../../services/api'
 import ButtonPrimaryVue from '../../components/buttonPrimary/ButtonPrimary.vue'
 import InputCustom from '../../components/inputCustom/InputCustom.vue'
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: 'Informations',
   components: {
     ButtonPrimaryVue, InputCustom
@@ -35,7 +37,6 @@ export default {
         email: this.email,
         password: this.password.trim()
       })
-      console.log(response)
       this.loader = false
       if (response.status === 201) {
         return this.sucess = true
@@ -43,4 +44,4 @@ export default {
       return this.error = { err: true, text: "Não foi possivel criar sua conta, contate o suporte" }
     },
   },
-}
+})

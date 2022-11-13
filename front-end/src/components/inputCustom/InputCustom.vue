@@ -11,11 +11,14 @@
 <script>
 import eyeVue from '../../svg/eye.vue'
 import closedEye from '../../svg/closedEye.vue'
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: 'Input',
   components: {
     eyeVue, closedEye
   },
+  emits: ["insertedValue", "onKeyDown"],
   props: {
     type: {
       type: String,
@@ -37,10 +40,6 @@ export default {
     typeChange() {
       this.typeInput = this.typeInput == "password" ? "text" : "password"
     },
-    clearInput() {
-      this.$refs.genericInput.value = ''
-      this.$emit('clearField')
-    },
     onKeyDown(event) {
       this.$emit('onKeyDown', event)
     },
@@ -48,7 +47,7 @@ export default {
       this.$emit('insertedValue', event.target.value)
     }
   }
-}
+})
 </script>
 <style >
 .containerInput {
