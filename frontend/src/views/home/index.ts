@@ -85,7 +85,8 @@ export default defineComponent({
         this.$toast('Url Encurtada com sucesso', { type: 'success' });
         return
       }
-      this.$toast('Algo de errado ocorreu, tente novamente', { type: 'error' });
+      this.error = { err: true, text: "não foi possivel criar sua url" },
+        this.$toast('Algo de errado ocorreu, tente novamente', { type: 'error' });
       return
     },
   },

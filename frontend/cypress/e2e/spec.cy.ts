@@ -1,0 +1,30 @@
+describe('Teste de Home', () => {
+  it('Teste do botão de cadastro', () => {
+    cy.visit('http://localhost:5173/')
+    cy.get('.btnLogin').contains('Fazer Cadastro').click()
+    cy.url().should('include', '/register')
+    // cy.get('.action-email')
+    //   .type('fake@email.com')
+    //   .should('have.value', 'fake@email.com')
+  })
+  it('Teste do botão de login', () => {
+    cy.visit('http://localhost:5173/')
+    cy.get('#login').contains('Fazer Login').click()
+    cy.url().should('include', '/login')
+    // cy.get('.action-email')
+    //   .type('fake@email.com')
+    //   .should('have.value', 'fake@email.com')
+  })
+  it('criar uma url com sucesso', () => {
+    cy.visit('http://localhost:5173/')
+    cy.get('#inputUrl').type('https://docs.cypress.io/api/commands/').should('have.value', 'https://docs.cypress.io/api/commands/')
+    cy.get('#submitUrl').contains("encurtar link").click()
+    cy.get('#shortLink')
+  })
+  it('Erro ao criar um url', () => {
+    cy.visit('http://localhost:5173/')
+    cy.get('#inputUrl').type('testeDeError').should('have.value', 'testeDeError')
+    cy.get('#submitUrl').contains("encurtar link").click()
+    cy.get('.error')
+  })
+})

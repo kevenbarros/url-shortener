@@ -1,6 +1,6 @@
 
 <template>
-  <button class="button" :disabled="loader">
+  <button class="button" :disabled="loader" :id="id">
     <div v-if="!loader">{{ $t(title) }}</div>
     <div class="lds-dual-ring" v-else></div>
   </button>
@@ -17,6 +17,10 @@ export default defineComponent({
     loader: {
       type: Boolean,
       required: false,
+    },
+    id: {
+      type: String,
+      required: true,
     }
   }
 })

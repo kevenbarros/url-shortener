@@ -5,12 +5,12 @@
       <div>
         <div v-if="!$store.state.logged">
           <router-link to="/register">
-            <button class="btnLogin">
+            <button class="btnLogin" id="register">
               {{ $t("signUp") }}
             </button>
           </router-link>
           <router-link to="/login">
-            <button class="btnLogin">
+            <button class="btnLogin" id="login">
               {{ $t("login") }}
             </button>
           </router-link>
@@ -27,18 +27,18 @@
       <div class="form">
         <div class="fieldsForm">
           <div class="fieldInput">
-            <InputCustom placeholder="Cole sua URL aqui" type="email" @insertedValue="($event: any) => { url = $event }" />
+            <InputCustom id="inputUrl" placeholder="Cole sua URL aqui" type="email" @insertedValue="($event: any) => { url = $event }" />
           </div>
           <div class="buttonInput">
-            <ButtonPrimaryVue title="shortenLink" @click="submitUrl()" :loader="loader" />
+            <ButtonPrimaryVue title="shortenLink" id="submitUrl" @click="submitUrl()" :loader="loader" />
           </div>
 
         </div>
         <p v-if="!error.err && shortUrl !== ''">
           {{ $t("shortenedLink") }}:
-          <a :href="shortUrl" class="text-primary">{{ shortUrl }}</a>
+          <a :href="shortUrl" id="shortLink" class="text-primary">{{ shortUrl }}</a>
         </p>
-        <p v-show="false" class="error">error.text </p>
+        <p v-else>{{ error.text }} </p>
 
       </div>
       <div class="form">

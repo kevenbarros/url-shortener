@@ -1,0 +1,3 @@
+context('Actions', () => {
+  cy.visit("")
+})
