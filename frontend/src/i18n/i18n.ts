@@ -3,10 +3,10 @@ import en from "../locales/en.json";
 import pt from "../locales/pt.json";
 
 const i18n = createI18n({
-  locale: "pt", // set locale
-  fallbackLocale: "pt", // set fallback locale
-  allowComposition: true, // you need to specify that!
-  messages: { en, pt }, // set locale messages
+  locale: "pt",
+  fallbackLocale: "pt",
+  allowComposition: true,
+  messages: { en, pt },
 });
 
 export default i18n;

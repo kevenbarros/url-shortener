@@ -1,5 +1,5 @@
 <template>
-  <div class="boxModal taggd" @click="(e: Event) => closeOutside(e)">
+  <div class="boxModal taggd" @click="(e: Event) => closeOutside(e)" id="modal">
     <div class="boxContent">
       <div class="title">
         <h2>
@@ -24,7 +24,11 @@
             <h3>{{ $t("visits") }}</h3>
             <h4>{{ url.visits }}</h4>
           </div>
-          <div v-if="category === 'all'" class="copy" @click="copyLink(url.shortURL)">
+          <div
+            v-if="category === 'all'"
+            class="copy"
+            @click="copyLink(url.shortURL)"
+          >
             <h3>{{ $t("copy") }}</h3>
             <CIcon name="cil-clone" height="20" />
           </div>
@@ -40,9 +44,5 @@
     </div>
   </div>
 </template>
-<script lang="ts" src="./index.ts">
-
-</script>
-<style lang="scss" src="./index.scss" scoped>
-
-</style>
+<script lang="ts" src="./index.ts"></script>
+<style lang="scss" src="./index.scss" scoped></style>

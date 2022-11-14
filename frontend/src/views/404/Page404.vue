@@ -1,9 +1,9 @@
 <template>
   <main class="box404">
-    <img src="../../images/404.png" alt="imagem 404">
-    <h1>{{ $t('404') }} </h1>
+    <img src="../../images/404.png" alt="imagem 404" />
+    <h1>{{ $t("404") }}</h1>
     <router-link to="/">
-      <button class="btnLogin">
+      <button class="btnLogin" id="buttonHome">
         {{ $t("button404") }}
       </button>
     </router-link>
@@ -12,20 +12,20 @@
 <script>
 import { defineComponent } from "vue";
 export default defineComponent({
-  name: "page not found",
-  title: "page not found"
-})
+  name: "page-not-found",
+  title: "page not found",
+});
 </script>
 <style scoped lang="scss">
 .btnLogin {
   margin-right: 0px;
   margin-top: 50px;
-  color: '#5B5959';
+  color: "#5B5959";
   font-size: 16px;
   padding: 12px 30px;
-  background-color: #E8E8E8;
+  background-color: #e8e8e8;
   border-radius: 50px;
-  border: 1px solid #5B5959;
+  border: 1px solid #5b5959;
   cursor: pointer;
 }
 
@@ -50,4 +50,3 @@ export default defineComponent({
   }
 }
 </style>
-

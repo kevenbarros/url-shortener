@@ -1,4 +1,3 @@
-
 <template>
   <button class="button" :disabled="loader" :id="id">
     <div v-if="!loader">{{ $t(title) }}</div>
@@ -8,7 +7,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 export default defineComponent({
-  name: 'Button',
+  name: "button-component",
   props: {
     title: {
       type: String,
@@ -21,9 +20,9 @@ export default defineComponent({
     id: {
       type: String,
       required: true,
-    }
-  }
-})
+    },
+  },
+});
 </script>
 <style scoped>
 .button {
@@ -34,11 +33,11 @@ export default defineComponent({
   font-size: 16px;
   font-weight: 600;
   cursor: pointer;
-  background-color: #1976D2;
+  background-color: #1976d2;
 }
 
 .button:hover {
-  background-color: #00984F;
+  background-color: #00984f;
 }
 
 .lds-dual-ring {

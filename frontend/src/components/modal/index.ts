@@ -1,10 +1,10 @@
-import ButtonPrimary from '../buttonPrimary/ButtonPrimary.vue'
+import ButtonPrimary from "../buttonPrimary/ButtonPrimary.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'Modal',
+  name: "modal-components",
   components: {
-    ButtonPrimary
+    ButtonPrimary,
   },
   emits: ["close", "delete"],
   props: {
@@ -14,29 +14,29 @@ export default defineComponent({
     },
     url: {
       type: Object,
-      required: true
+      required: true,
     },
     category: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   methods: {
     closeOutside(e: any) {
-      if (e.target.nodeType == 1 && e.target.classList.contains('taggd')) {
+      if (e.target.nodeType == 1 && e.target.classList.contains("taggd")) {
         e.stopPropagation();
-        this.close()
+        this.close();
       }
     },
     emitDelete() {
-      this.$emit('delete')
-      this.$emit('close')
+      this.$emit("delete");
+      this.$emit("close");
     },
     close() {
-      this.$emit('close')
+      this.$emit("close");
     },
     copyLink(link: string): void {
       navigator.clipboard.writeText(link);
     },
-  }
-})
+  },
+});

@@ -1,41 +1,44 @@
-import ButtonPrimaryVue from '../../components/buttonPrimary/ButtonPrimary.vue'
-import InputCustom from '../../components/inputCustom/InputCustom.vue'
+import ButtonPrimaryVue from "../../components/buttonPrimary/ButtonPrimary.vue";
+import InputCustom from "../../components/inputCustom/InputCustom.vue";
 import { defineComponent } from "vue";
-import { GetAllUrls, PostUrl } from '../../services/serviceUrl'
-import Modal from '../../components/modal/Modal.vue'
+import { GetAllUrls, PostUrl } from "../../services/serviceUrl";
+import Modal from "../../components/modal/Modal.vue";
 
 declare interface Urls {
-  visits: number,
-  longURL: string,
-  shortURL: string,
+  visits: number;
+  longURL: string;
+  shortURL: string;
 }
 interface Data {
-  url: string,
-  shortUrl: string,
-  urls: Array<Urls>,
-  email: string,
-  password: string,
-  logged: boolean,
-  loader: boolean,
-  urlModal: Urls,
-  showModal: boolean
+  url: string;
+  shortUrl: string;
+  urls: Array<Urls>;
+  email: string;
+  password: string;
+  logged: boolean;
+  loader: boolean;
+  urlModal: Urls;
+  showModal: boolean;
   error: {
-    err: boolean, text: string
-  }
+    err: boolean;
+    text: string;
+  };
 }
 export default defineComponent({
-  name: "Home",
+  name: "home-view",
   title: "Home",
   components: {
-    ButtonPrimaryVue, InputCustom, Modal
+    ButtonPrimaryVue,
+    InputCustom,
+    Modal,
   },
   data: (): Data => {
     return {
       showModal: false,
       urlModal: {
         visits: 0,
-        longURL: '',
-        shortURL: '',
+        longURL: "",
+        shortURL: "",
       },
       url: "",
       shortUrl: "",
@@ -49,30 +52,30 @@ export default defineComponent({
   },
   methods: {
     openModal(data: Urls): void {
-      this.showModal = true
-      this.urlModal = data
+      this.showModal = true;
+      this.urlModal = data;
     },
     smallUrl(longURL: string): string {
-      const urlMain = longURL.split('/')
-      const site = urlMain[2]
-      return site
+      const urlMain = longURL.split("/");
+      const site = urlMain[2];
+      return site;
     },
     mediumURL(longURL: string): string {
-      const urlMain = longURL.split('/')
-      const site = urlMain[2]
-      const page = urlMain[3]
-      return `${site}/${page}`
+      const urlMain = longURL.split("/");
+      const site = urlMain[2];
+      const page = urlMain[3];
+      return `${site}/${page}`;
     },
     async getUrls(): Promise<void> {
       const response = await GetAllUrls();
       if (Number(response.status) === 200) {
         this.urls = response.body;
-        return
+        return;
       }
-      this.$toast('Algo de errado ocorreu :(', { type: 'error' });
+      this.$toast("Algo de errado ocorreu :(", { type: "error" });
     },
     async submitUrl(): Promise<void> {
-      if (this.url.trim() == "") return
+      if (this.url.trim() == "") return;
       this.loader = true;
       const response = await PostUrl({
         url: this.url,
@@ -81,18 +84,19 @@ export default defineComponent({
       this.loader = false;
       if (Number(response.status) === 200) {
         this.getUrls();
-        this.shortUrl = response.body.shortUrl
-        this.$toast('Url Encurtada com sucesso', { type: 'success' });
-        return
+        this.shortUrl = response.body.shortUrl;
+        this.$toast("Url Encurtada com sucesso", { type: "success" });
+        return;
       }
-      this.error = { err: true, text: "não foi possivel criar sua url" },
-        this.$toast('Algo de errado ocorreu, tente novamente', { type: 'error' });
-      return
+      (this.error = { err: true, text: "não foi possivel criar sua url" }),
+        this.$toast("Algo de errado ocorreu, tente novamente", {
+          type: "error",
+        });
+      return;
     },
   },
   mounted() {
-    this.logged = this.$store.state.logged
+    this.logged = this.$store.state.logged;
     this.getUrls();
   },
-
 });

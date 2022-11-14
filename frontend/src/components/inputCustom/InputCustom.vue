@@ -1,7 +1,13 @@
-
 <template>
   <div class="containerInput">
-    <input :type="typeInput" :id="id" class="inputForm" :placeholder="placeholder" @input="emitValue" @keydown="onKeyDown($event)" />
+    <input
+      :type="typeInput"
+      :id="id"
+      class="inputForm"
+      :placeholder="placeholder"
+      @input="emitValue"
+      @keydown="onKeyDown($event)"
+    />
     <div class="eye" v-if="type == 'password'" @click="typeChange()">
       <eyeVue v-if="typeInput == 'password'" />
       <closedEye v-else />
@@ -9,50 +15,51 @@
   </div>
 </template>
 <script lang="ts">
-import eyeVue from '../../svg/eye.vue'
-import closedEye from '../../svg/closedEye.vue'
+import eyeVue from "../../svg/eye.vue";
+import closedEye from "../../svg/closedEye.vue";
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'Input',
+  name: "input-component",
   components: {
-    eyeVue, closedEye
+    eyeVue,
+    closedEye,
   },
   emits: ["insertedValue", "onKeyDown"],
   props: {
     type: {
       type: String,
       required: false,
-      default: 'text'
+      default: "text",
     },
     placeholder: {
       type: String,
       required: false,
-      default: ''
+      default: "",
     },
     id: {
       type: String,
       required: true,
-    }
+    },
   },
   data() {
     return {
-      typeInput: this.type
-    }
+      typeInput: this.type,
+    };
   },
   methods: {
     typeChange(): void {
-      this.typeInput = this.typeInput == "password" ? "text" : "password"
+      this.typeInput = this.typeInput == "password" ? "text" : "password";
     },
     onKeyDown(event: Event): void {
-      this.$emit('onKeyDown', event)
+      this.$emit("onKeyDown", event);
     },
     emitValue(event: Event) {
       const target = event.target as HTMLInputElement;
-      this.$emit('insertedValue', target.value)
-    }
-  }
-})
+      this.$emit("insertedValue", target.value);
+    },
+  },
+});
 </script>
 <style lang="css" scoped>
 .containerInput {
@@ -71,6 +78,6 @@ export default defineComponent({
   padding: 16px 20px;
   margin-bottom: 32px;
   border-radius: 10px;
-  border: 1px solid #BDBDBD;
+  border: 1px solid #bdbdbd;
 }
 </style>

@@ -1,6 +1,12 @@
 <template>
   <div>
-    <Modal category="all" :title="smallUrl(urlModal.longURL)" @close="showModal = false" v-if="showModal" :url="urlModal" />
+    <Modal
+      category="all"
+      :title="smallUrl(urlModal.longURL)"
+      @close="showModal = false"
+      v-if="showModal"
+      :url="urlModal"
+    />
     <main class="container">
       <div>
         <div v-if="!$store.state.logged">
@@ -22,29 +28,40 @@
             </button>
           </router-link>
         </div>
-
       </div>
       <div class="form">
         <div class="fieldsForm">
           <div class="fieldInput">
-            <InputCustom id="inputUrl" placeholder="Cole sua URL aqui" type="email" @insertedValue="($event: any) => { url = $event }" />
+            <InputCustom
+              id="inputUrl"
+              placeholder="Cole sua URL aqui"
+              type="email"
+              @insertedValue="($event: any) => { url = $event }"
+            />
           </div>
           <div class="buttonInput">
-            <ButtonPrimaryVue title="shortenLink" id="submitUrl" @click="submitUrl()" :loader="loader" />
+            <ButtonPrimaryVue
+              title="shortenLink"
+              id="submitUrl"
+              @click="submitUrl()"
+              :loader="loader"
+            />
           </div>
-
         </div>
         <p v-if="!error.err && shortUrl !== ''">
           {{ $t("shortenedLink") }}:
-          <a :href="shortUrl" id="shortLink" class="text-primary">{{ shortUrl }}</a>
+          <a :href="shortUrl" id="shortLink" class="text-primary">{{
+            shortUrl
+          }}</a>
         </p>
-        <p v-else>{{ error.text }} </p>
-
+        <p v-else class="error">{{ error.text }}</p>
       </div>
       <div class="form">
         <div>
           <div class="fieldsTable">
-            <h2 class="titleMain">{{ urls.length ? $t("theMostVisited") : $t("noLinks") }}</h2>
+            <h2 class="titleMain">
+              {{ urls.length ? $t("theMostVisited") : $t("noLinks") }}
+            </h2>
             <div class="table" v-show="urls.length">
               <div class="tableHeader">
                 <div class="fieldTable">
@@ -53,22 +70,37 @@
                 <div class="fieldTable long">
                   <h4>{{ $t("originalUrl") }}</h4>
                 </div>
-                <div class="fieldTable shortened" :style="{ display: 'flex', justifyContent: 'flex-start' }">
+                <div
+                  class="fieldTable shortened"
+                  :style="{ display: 'flex', justifyContent: 'flex-start' }"
+                >
                   <h4>{{ $t("shortenedLink") }}</h4>
                 </div>
               </div>
               <div>
-                <div class="tableHeader click" @click="openModal(url)" v-for="(url, index) in urls" :key="index" :style="{
-                  backgroundColor: index % 2 ? '#fff' : '#EEF1F2'
-                }">
+                <div
+                  class="tableHeader click"
+                  @click="openModal(url)"
+                  v-for="(url, index) in urls"
+                  :id="`item_table_${index}`"
+                  :key="index"
+                  :style="{
+                    backgroundColor: index % 2 ? '#fff' : '#EEF1F2',
+                  }"
+                >
                   <div class="fieldTable">
                     <p class="textTable">{{ url.visits }}</p>
                   </div>
                   <div class="fieldTable long">
-                    <p class="textTable ">{{ mediumURL(url.longURL) }}</p>
+                    <p class="textTable">{{ mediumURL(url.longURL) }}</p>
                   </div>
                   <div class="fieldTable shortened">
-                    <a :href="url.shortURL" target="_blank" :style="{ textDecoration: 'none' }">{{ url.shortURL }}</a>
+                    <a
+                      :href="url.shortURL"
+                      target="_blank"
+                      :style="{ textDecoration: 'none' }"
+                      >{{ url.shortURL }}</a
+                    >
                   </div>
                 </div>
               </div>
@@ -80,6 +112,4 @@
   </div>
 </template>
 <script lang="ts" src="./index.ts"></script>
-<style lang="scss" src="./index.scss" scoped>
-
-</style>
+<style lang="scss" src="./index.scss" scoped></style>

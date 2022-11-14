@@ -1,15 +1,11 @@
-import {
-  cilClone,
-  cilTrash,
-  cilXCircle
-} from "@coreui/icons";
+import { cilClone, cilTrash, cilXCircle } from "@coreui/icons";
 
 const icons = {
   cilTrash,
   cilClone,
-  cilXCircle
+  cilXCircle,
 };
 
 export const registerCoreUIIcons = (app: any) => {
   app.provide("icons", icons);
-}
+};

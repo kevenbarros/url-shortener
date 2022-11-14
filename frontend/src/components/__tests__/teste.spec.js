@@ -1,3 +1,3 @@
-context('Actions', () => {
-  cy.visit("")
-})
+context("Actions", () => {
+  cy.visit("");
+});
