@@ -44,6 +44,8 @@ npm run test:unit
 ```sh
 # to run the test end-to-end it is necessary to start the server (npm start) no server directory
 npm run test:e2e:dev
+#if the cypress interface does not open use
+yarn run cypress open
 ```
 
 This runs the end-to-end tests against the Vite development server.
