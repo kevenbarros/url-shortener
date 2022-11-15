@@ -1,5 +1,10 @@
 # Url shortener
  this is a simple app that shortens links.
+## video links
+### how to initialize the project
+https://share.vidyard.com/watch/UvJHS4KNGhPLNoomiq49rG?
+### explaining project
+https://share.vidyard.com/watch/iSp9PqeCZCPN9Z9vF9Z3vF?
  
 ## How to run the project
 
