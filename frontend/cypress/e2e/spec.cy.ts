@@ -1,7 +1,7 @@
 describe("Teste de Home", () => {
   it("Teste do botão de cadastro", () => {
     cy.visit("/");
-    cy.get(".btnLogin").contains("Fazer Cadastro").click();
+    cy.get(".btnRegister").contains("Fazer Cadastro").click();
     cy.url().should("include", "/register");
   });
   it("Teste do botão de login", () => {
@@ -82,9 +82,8 @@ describe("Teste de Register", () => {
   });
   it("Cadastro com sucesso", () => {
     cy.visit("/register");
-    cy.get("#emailRegister")
-      .type("012@gmail.com")
-      .should("have.value", "012@gmail.com");
+    const email = `${Math.floor(Math.random() * 1000)}@gmail.com`;
+    cy.get("#emailRegister").type(email).should("have.value", email);
     cy.get("#passwordRegister").type("1234").should("have.value", "1234");
     cy.get("#passwordRepeatRegister").type("1234").should("have.value", "1234");
     cy.get("#buttonRegister").click();
