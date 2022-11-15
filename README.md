@@ -24,7 +24,7 @@ npm install or yarn install
 # open project on localhost:5173
 npm run dev
 ```
-# front-end test
+## front-end test
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
