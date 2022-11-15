@@ -34,6 +34,7 @@ npm run test:unit
 ### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
 
 ```sh
+# to run the test end-to-end it is necessary to start the server
 npm run test:e2e:dev
 ```
 
