@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express"
-import { Url } from "../models/url";
+import { Url } from "../models/Url";
 import { validateUrl, generateUrlKey } from "../routes/service";
 
 const save = (longURL: string, shortURL: string, shortUrlId: string, userId: string): void => {
@@ -39,7 +39,7 @@ const getAllUrl = async (req: Request, res: Response) => {
 
 const postUrl = async (req: Request, res: Response) => {
   try {
-    if (!!validateUrl(req.body.url)) return res.status(400).send({ msg: "Invalid URL." });
+    if (!!validateUrl(req.body.url)) return res.status(400).send({ msg: "Link invalido :(" });
     const urlKey = generateUrlKey();
     const urlBody = req.body.url
     const shortUrl = `http://localhost:5000/${urlKey}`
@@ -47,13 +47,12 @@ const postUrl = async (req: Request, res: Response) => {
     await save(urlBody, shortUrl, urlKey, userId)
     return res.status(200).send({ shortUrl });
   } catch (error) {
-    return res.status(500).send({ msg: "Ocorreu um erro, tente novamente" });
+    return res.status(500).send({msg: "Ocorreu um erro, tente novamente"});
   }
 }
 
 const deleteUrl = async (req: Request, res: Response) => {
   try {
-    console.log(req)
     let userId = req.params.userId
     let idUrl = req.params.urlId
     const checkUrl = await Url.find({ _id: idUrl })

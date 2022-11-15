@@ -9,15 +9,15 @@
       @delete="deleteUrl(urlModal._id)"
     />
     <main class="container">
-      <div>
-        <button id="logout" class="btnLogin" @click="logout">
-          {{ $t("exit") }}
-        </button>
+      <div class="buttonsHeader">
         <router-link to="/">
           <button class="btnLogin">
             {{ $t("allUrls") }}
           </button>
         </router-link>
+        <button id="logout" class="btnLogin" @click="logout">
+          {{ $t("exit") }}
+        </button>
       </div>
       <div class="form">
         <div class="fieldsForm">
@@ -27,7 +27,15 @@
               placeholder="Cole sua URL aqui"
               type="email"
               @insertedValue="($event: string) => { url = $event }"
+              @onKeyDown="() => clearErrors()"
             />
+            <p v-if="!error.err && shortUrl !== ''" class="currentLink">
+              {{ $t("shortenedLink") }}:
+              <a :href="shortUrl" id="shortLink" class="text-primary">{{
+                shortUrl
+              }}</a>
+            </p>
+            <p v-else class="error">{{ error.text }}</p>
           </div>
           <div class="buttonInput">
             <ButtonPrimaryVue
@@ -39,15 +47,8 @@
             />
           </div>
         </div>
-        <p v-if="!error.err && shortUrl !== ''" class="currentLink">
-          {{ $t("shortenedLink") }}:
-          <a :href="shortUrl" id="shortLink" class="text-primary">{{
-            shortUrl
-          }}</a>
-        </p>
-        <p v-show="false" class="error">error.text</p>
       </div>
-      <div class="form">
+      <div class="form" v-if="!loadingTable">
         <div>
           <div class="fieldsTable">
             <h2 class="titleMain">
@@ -94,6 +95,14 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="loading" v-else>
+        <div class="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
       </div>
     </main>

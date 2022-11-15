@@ -41,7 +41,7 @@ export default defineComponent({
       this.error = { err: false, text: "" };
     },
     async register(): Promise<void> {
-      if (!(this.password.trim() === this.confirmPassword.trim())) {
+      if (this.password.trim() !== this.confirmPassword.trim()) {
         this.error = { err: true, text: "Senhas não são iguais" };
         return;
       }

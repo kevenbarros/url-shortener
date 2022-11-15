@@ -13,16 +13,18 @@
       <div class="fields">
         <div class="fieldsModal">
           <h3>{{ $t("originalUrl") }}</h3>
-          <h4>{{ url.longURL }}</h4>
+          <h4 id="originalUrl">{{ url.longURL }}</h4>
         </div>
         <div class="fieldsModal">
           <h3>{{ $t("shortenedLink") }}</h3>
-          <a :href="url.shortURL" class="text-primary">{{ url.shortURL }}</a>
+          <a :href="url.shortURL" class="text-primary" id="shortenedLink">{{
+            url.shortURL
+          }}</a>
         </div>
         <div class="visitsCopy">
           <div>
             <h3>{{ $t("visits") }}</h3>
-            <h4>{{ url.visits }}</h4>
+            <h4 id="visits">{{ url.visits }}</h4>
           </div>
           <div
             v-if="category === 'all'"
@@ -39,7 +41,12 @@
         </div>
       </div>
       <div class="exit">
-        <ButtonPrimary title="sair" bgColor="#1976D2" @click="close()" />
+        <ButtonPrimary
+          id="modal"
+          title="sair"
+          bgColor="#1976D2"
+          @click="close()"
+        ></ButtonPrimary>
       </div>
     </div>
   </div>

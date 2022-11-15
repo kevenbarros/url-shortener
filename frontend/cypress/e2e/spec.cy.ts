@@ -1,16 +1,16 @@
 describe("Teste de Home", () => {
   it("Teste do botão de cadastro", () => {
-    cy.visit("http://localhost:5173/");
+    cy.visit("/");
     cy.get(".btnLogin").contains("Fazer Cadastro").click();
     cy.url().should("include", "/register");
   });
   it("Teste do botão de login", () => {
-    cy.visit("http://localhost:5173/");
+    cy.visit("/");
     cy.get("#login").contains("Fazer Login").click();
     cy.url().should("include", "/login");
   });
   it("criar uma url com sucesso", () => {
-    cy.visit("http://localhost:5173/");
+    cy.visit("/");
     cy.get("#inputUrl")
       .type("https://docs.cypress.io/api/commands/")
       .should("have.value", "https://docs.cypress.io/api/commands/");
@@ -18,7 +18,7 @@ describe("Teste de Home", () => {
     cy.get("#shortLink");
   });
   it("Erro ao criar um url", () => {
-    cy.visit("http://localhost:5173/");
+    cy.visit("/");
     cy.get("#inputUrl")
       .type("testeDeError")
       .should("have.value", "testeDeError");
@@ -26,7 +26,7 @@ describe("Teste de Home", () => {
     cy.get(".error");
   });
   it("abertura de modal", () => {
-    cy.visit("http://localhost:5173/");
+    cy.visit("/");
     cy.get("#item_table_0").click();
     cy.get("#modal").contains("www.google.com.br");
   });
@@ -34,19 +34,19 @@ describe("Teste de Home", () => {
 
 describe("Teste de Login", () => {
   it("teste botão de cadastro", () => {
-    cy.visit("http://localhost:5173/login");
+    cy.visit("/login");
     cy.get("#register").contains("Fazer Cadastro").click();
     cy.url().should("include", "/register");
   });
   it("sucesso no login", () => {
-    cy.visit("http://localhost:5173/login");
+    cy.visit("/login");
     cy.get("#emailLogin").type("123").should("have.value", "123");
     cy.get("#passwordLogin").type("123").should("have.value", "123");
     cy.get("#buttonLogin").click();
     cy.url().should("include", "/list");
   });
   it("erro no login", () => {
-    cy.visit("http://localhost:5173/login");
+    cy.visit("/login");
     cy.get("#emailLogin").type("nãoExiste").should("have.value", "nãoExiste");
     cy.get("#passwordLogin")
       .type("nãoExiste")
@@ -58,12 +58,12 @@ describe("Teste de Login", () => {
 
 describe("Teste de Register", () => {
   it("teste botão de login", () => {
-    cy.visit("http://localhost:5173/register");
+    cy.visit("/register");
     cy.get("#login").contains("Fazer Login").click();
     cy.url().should("include", "/login");
   });
   it("Email invalido", () => {
-    cy.visit("http://localhost:5173/register");
+    cy.visit("/register");
     cy.get("#emailRegister").type("123").should("have.value", "123");
     cy.get("#passwordRegister").type("123").should("have.value", "123");
     cy.get("#passwordRepeatRegister").type("123").should("have.value", "123");
@@ -71,7 +71,7 @@ describe("Teste de Register", () => {
     cy.get(".error").contains("Email Invalido!");
   });
   it("Senhas diferentes", () => {
-    cy.visit("http://localhost:5173/register");
+    cy.visit("/register");
     cy.get("#emailRegister")
       .type("123@gmail.com")
       .should("have.value", "123@gmail.com");
@@ -81,7 +81,7 @@ describe("Teste de Register", () => {
     cy.get(".error").contains("Senhas não são iguais");
   });
   it("Cadastro com sucesso", () => {
-    cy.visit("http://localhost:5173/register");
+    cy.visit("/register");
     cy.get("#emailRegister")
       .type("012@gmail.com")
       .should("have.value", "012@gmail.com");
@@ -95,14 +95,14 @@ describe("Teste de Register", () => {
 });
 describe("Teste de myList", () => {
   it("Teste de fluxo até minha lista", () => {
-    cy.visit("http://localhost:5173/login");
+    cy.visit("/login");
     cy.get("#emailLogin").type("123").should("have.value", "123");
     cy.get("#passwordLogin").type("123").should("have.value", "123");
     cy.get("#buttonLogin").click();
     cy.url().should("include", "/list");
   });
   it("logout", () => {
-    cy.visit("http://localhost:5173/login");
+    cy.visit("/login");
     cy.get("#emailLogin").type("123").should("have.value", "123");
     cy.get("#passwordLogin").type("123").should("have.value", "123");
     cy.get("#buttonLogin").click();
@@ -110,7 +110,7 @@ describe("Teste de myList", () => {
     cy.url().should("include", "/");
   });
   it("criar link encurtado", () => {
-    cy.visit("http://localhost:5173/login");
+    cy.visit("/login");
     cy.get("#emailLogin").type("123").should("have.value", "123");
     cy.get("#passwordLogin").type("123").should("have.value", "123");
     cy.get("#buttonLogin").click();
@@ -121,7 +121,7 @@ describe("Teste de myList", () => {
     cy.get("#shortLink");
   });
   it("Teste modal", () => {
-    cy.visit("http://localhost:5173/login");
+    cy.visit("/login");
     cy.get("#emailLogin").type("123").should("have.value", "123");
     cy.get("#passwordLogin").type("123").should("have.value", "123");
     cy.get("#buttonLogin").click();
@@ -131,11 +131,11 @@ describe("Teste de myList", () => {
 });
 describe("Teste de page not found (404)", () => {
   it("page not found", () => {
-    cy.visit("http://localhost:5173/naoexiste");
+    cy.visit("/naoexiste");
     cy.get(".box404").contains("OPS! NÃO ENCONTRAMOS ESSA PÁGINA");
   });
   it("Botão Home", () => {
-    cy.visit("http://localhost:5173/naoexiste");
+    cy.visit("/naoexiste");
     cy.get("#buttonHome").click();
     cy.url().should("include", "/");
   });

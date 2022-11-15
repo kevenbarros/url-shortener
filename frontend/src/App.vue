@@ -3,6 +3,9 @@ import { RouterView } from "vue-router";
 import { checkerToken } from "./services/serviceUser";
 
 export default {
+  components: {
+    RouterView,
+  },
   async created() {
     if (this.$store.state.token) {
       const response = await checkerToken({

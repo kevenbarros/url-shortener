@@ -9,9 +9,9 @@
     />
     <main class="container">
       <div>
-        <div v-if="!$store.state.logged">
+        <div v-if="!$store.state.logged" class="buttonsHeader">
           <router-link to="/register">
-            <button class="btnLogin" id="register">
+            <button class="btnRegister" id="register">
               {{ $t("signUp") }}
             </button>
           </router-link>
@@ -21,12 +21,16 @@
             </button>
           </router-link>
         </div>
-        <div v-else>
+        <div v-else class="buttonsHeaderLogged">
           <router-link to="/list">
-            <button class="btnLogin">
+            <button class="btnEmail">
+              <p>{{ $t("hello") }}</p>
               {{ $store.state.userEmail }}
             </button>
           </router-link>
+          <button id="logout" class="btnLogin" @click="logout">
+            {{ $t("exit") }}
+          </button>
         </div>
       </div>
       <div class="form">
@@ -37,7 +41,15 @@
               placeholder="Cole sua URL aqui"
               type="email"
               @insertedValue="($event: any) => { url = $event }"
+              @onKeyDown="() => clearErrors()"
             />
+            <p v-if="!error.err && shortUrl !== ''">
+              {{ $t("shortenedLink") }}:
+              <a :href="shortUrl" id="shortLink" class="text-primary">{{
+                shortUrl
+              }}</a>
+            </p>
+            <p v-else class="error">{{ error.text }}</p>
           </div>
           <div class="buttonInput">
             <ButtonPrimaryVue
@@ -48,15 +60,8 @@
             />
           </div>
         </div>
-        <p v-if="!error.err && shortUrl !== ''">
-          {{ $t("shortenedLink") }}:
-          <a :href="shortUrl" id="shortLink" class="text-primary">{{
-            shortUrl
-          }}</a>
-        </p>
-        <p v-else class="error">{{ error.text }}</p>
       </div>
-      <div class="form">
+      <div class="form" v-if="!loadingTable">
         <div>
           <div class="fieldsTable">
             <h2 class="titleMain">
@@ -106,6 +111,14 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="loading" v-else>
+        <div class="lds-ellipsis">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
       </div>
     </main>

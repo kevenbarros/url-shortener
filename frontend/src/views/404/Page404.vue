@@ -9,7 +9,7 @@
     </router-link>
   </main>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 export default defineComponent({
   name: "page-not-found",
@@ -28,7 +28,6 @@ export default defineComponent({
   border: 1px solid #5b5959;
   cursor: pointer;
 }
-
 .box404 {
   height: 100vh;
   display: flex;
@@ -36,12 +35,10 @@ export default defineComponent({
   align-items: center;
   justify-content: start;
   background-color: #459649;
-
   h1 {
     font-size: 28px;
     font-weight: 800;
   }
-
   img {
     width: 100%;
     height: 100%;

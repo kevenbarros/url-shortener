@@ -23,7 +23,7 @@ export default defineComponent({
   },
   methods: {
     closeOutside(e: any) {
-      if (e.target.nodeType == 1 && e.target.classList.contains("taggd")) {
+      if (e.target.nodeType === 1 && e.target.classList.contains("taggd")) {
         e.stopPropagation();
         this.close();
       }
@@ -36,6 +36,7 @@ export default defineComponent({
       this.$emit("close");
     },
     copyLink(link: string): void {
+      this.$toast("Link copiado com sucesso", { type: "success" });
       navigator.clipboard.writeText(link);
     },
   },

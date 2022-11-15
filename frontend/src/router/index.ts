@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Home from "../views/home/Home.vue";
-import Login from "../views/login/Login.vue";
-import Register from "../views/register/Register.vue";
+import Home from "../views/home/HomePage.vue";
+import Login from "../views/login/LoginPage.vue";
+import Register from "../views/register/RegisterPage.vue";
 import ListUser from "../views/listUser/ListUser.vue";
 import NotFound from "../views/404/Page404.vue";
 const router = createRouter({

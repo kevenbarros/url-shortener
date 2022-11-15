@@ -1,10 +1,5 @@
 import http from "./http";
-import type {
-  ResponseUrl,
-  UrlPost,
-  returnPostUrl,
-  UrlUser,
-} from "../types/services";
+import type { ResponseUrl, UrlPost, returnPostUrl } from "../types/services";
 
 export const GetAllUrls = async (): Promise<ResponseUrl> => {
   return http.get("/urlGetAll");
