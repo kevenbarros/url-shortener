@@ -15,7 +15,7 @@ npm start
 
 # with the server started we need to start the frontend
 # returning to the root of the project we will do
-cd frontend
+cd ../frontend
 
 # install front-end dependencies
 npm install or yarn install 
