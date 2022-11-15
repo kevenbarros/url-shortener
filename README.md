@@ -32,6 +32,7 @@ npm install or yarn install
 npm run dev
 ```
 ## front-end test
+https://share.vidyard.com/watch/Yox7ek6xNoRt15Pjr1ZpcE?
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
