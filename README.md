@@ -4,7 +4,7 @@
 ## How to run the project
 
 ```bash
-# first we need to start the server
+# first we need to enter the server directory
 cd server
 
 # install server dependencies
