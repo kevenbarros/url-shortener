@@ -3,8 +3,6 @@
 ## video links
 ### how to initialize the project
 https://share.vidyard.com/watch/UvJHS4KNGhPLNoomiq49rG?
-### explaining project
-https://share.vidyard.com/watch/iSp9PqeCZCPN9Z9vF9Z3vF?
 ### Project figma link
 https://www.figma.com/file/I0IuD2h9mnLegIQdB9vNRZ/Teste?node-id=0%3A1&t=gIwZrqrJ8jXVmcyC-0
 
