@@ -3,8 +3,6 @@
 ## video links
 ### how to initialize the project
 https://share.vidyard.com/watch/UvJHS4KNGhPLNoomiq49rG?
-### explaining project
-https://share.vidyard.com/watch/iSp9PqeCZCPN9Z9vF9Z3vF?
 ### Project figma link
 https://www.figma.com/file/I0IuD2h9mnLegIQdB9vNRZ/Teste?node-id=0%3A1&t=gIwZrqrJ8jXVmcyC-0
 
@@ -32,6 +30,7 @@ npm install or yarn install
 npm run dev
 ```
 ## front-end test
+https://share.vidyard.com/watch/Yox7ek6xNoRt15Pjr1ZpcE?
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
@@ -43,6 +42,8 @@ npm run test:unit
 ```sh
 # to run the test end-to-end it is necessary to start the server (npm start) no server directory
 npm run test:e2e:dev
+#if the cypress interface does not open use
+yarn run cypress open
 ```
 
 This runs the end-to-end tests against the Vite development server.
