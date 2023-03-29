@@ -18,9 +18,9 @@ mongoose
   )
   .then(() => {
     console.log("mongoDB conection is working");
-    app.listen(5000);
+    app.listen(3333);
   })
-  .catch(err => console.log(err));
+  .catch(err => console.log(err,"deu erro :("));
 
 
 export { app }
