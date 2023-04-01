@@ -42,7 +42,7 @@ const postUrl = async (req: Request, res: Response) => {
     if (!!validateUrl(req.body.url)) return res.status(400).send({ msg: "Link invalido :(" });
     const urlKey = generateUrlKey();
     const urlBody = req.body.url
-    const shortUrl = `http://localhost:5000/${urlKey}`
+    const shortUrl = `http://localhost:9002/${urlKey}`
     const userId = req.body.userId ? req.body.userId : ''
     await save(urlBody, shortUrl, urlKey, userId)
     return res.status(200).send({ shortUrl });
