@@ -40,7 +40,7 @@ function interceptorsResponseError(error: any) {
   }
   return erro;
 }
-const baseUrl = "http://15.228.98.129:9002/";
+const baseUrl = "https://url-shortener-41u7-cf1v2553d-kevenbarros.vercel.app";
 const api = axios.create({
   baseURL: baseUrl,
 });
