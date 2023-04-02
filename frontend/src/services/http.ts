@@ -40,9 +40,9 @@ function interceptorsResponseError(error: any) {
   }
   return erro;
 }
-
+const baseUrl = "http://15.228.98.129:9002/";
 const api = axios.create({
-  baseURL: "http://localhost:5000/",
+  baseURL: baseUrl,
 });
 
 api.interceptors.request.use(
