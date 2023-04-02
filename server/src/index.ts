@@ -20,7 +20,7 @@ mongoose
     console.log("mongoDB conection is working");
     app.listen(9002)
   })
-  .catch(err => console.log(err,"deu erro :( "));
+  .catch(err => console.log(err,"deu erro :( (miado)"));
 
 
 export { app }
